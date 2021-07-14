@@ -1,10 +1,39 @@
 {% extends 'base.html' %}
-
 {% block content %}
-  {% for post in object_list %}
-  <div class="post-entry">
-    <h2><a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a></h2>
-    <p>{{ post.body }}</p>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      New
+    </div>
+    <div class="col order-5">
+      In Progress
+    </div>
+    <div class="col order-1">
+      In Qa
+    </div>
+          <div class="col order-1">
+      Ready
+    </div>
+          <div class="col order-1">
+      Done
+    </div>
   </div>
+</div>
+
+  {% for post in object_list %}
+<div class="card-body">
+          <h5 class="card-title"><h2><a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a></h2></h5>
+          <p class="card-text"><p>{{ post.body }}</p></p>
+    <p>Author: {{ post.author }}</p>
+    {% if post.author == request.user or user.is_superuser  %}
+    <a href="{% url 'post_update' post.pk %}">Update</a> <br>
+    {% endif %}
+    {% if user.is_superuser %}
+    <a href="{% url 'post_delete' post.id %}">Delete</a>
+    {% endif %}
+        </div>
+
   {% endfor %}
+
 {% endblock content %}

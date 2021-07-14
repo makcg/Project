@@ -1,5 +1,6 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.views import LoginView, LogoutView
+from django.http import request
 from django.urls import reverse_lazy
 from django.views import generic
 from django.views.generic import CreateView

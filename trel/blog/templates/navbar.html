@@ -1,6 +1,7 @@
-<nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
+<nav class="navbar navbar-expand-md navbar-light bg-light">
   <div class="container">
     <a class="navbar-brand" href="{% url 'home' %}">Home Tral</a>
+    <h3><a class="navbar-brand" href="{% url 'post_new' %}">New Post</a></h3>
     <div class="d-block" id="navbarText">
       <ul class="navbar-nav mr-auto">
         {% if request.user.is_authenticated %}
